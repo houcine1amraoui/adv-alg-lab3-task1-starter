@@ -42,3 +42,32 @@ def brute_force(coins, amount):
     
     # TODO: return the best result
     # return _____
+
+
+import random
+
+def stochastic(coins, amount):
+    result = []
+    while amount > 0:
+        # Filter only usable coins
+        valid = [c for c in coins if c <= amount]
+        if not valid:
+            # Cannot continue, no coin fits the remaining amount
+            break
+        coin = random.choice(valid)
+        amount -= coin
+        result.append(coin)
+    return result
+
+def trial(coins, amount, n_trials):
+    best = None
+    best_len = float('inf')
+
+    for _ in range(n_trials):
+        result = stochastic(coins, amount)
+        # check if result is valid and better
+        if sum(result) == amount and len(result) < best_len:
+            best = result
+            best_len = len(result)
+
+    return best
