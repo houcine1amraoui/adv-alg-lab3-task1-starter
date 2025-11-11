@@ -66,8 +66,8 @@ def trial(coins, amount, n_trials):
     for _ in range(n_trials):
         result = stochastic(coins, amount)
         # check if result is valid and better
-        if sum(result) == amount and len(result) < best_len:
-            best = result
-            best_len = len(result)
+        # if ________ and ______:
+        #     ______
+        #     ______
 
     return best
